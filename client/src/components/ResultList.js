@@ -2,11 +2,7 @@
 
 import React from 'react';
 
-import { sanitize } from 'dompurify'; // new
-import { Card, Row } from 'react-bootstrap'; // new
-import { Image } from "react-bootstrap";
-import { Button } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table';
+
 
 
 
