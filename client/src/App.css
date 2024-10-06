@@ -11,6 +11,12 @@
   height: 10vh;
 }
 
+.customButton {
+  background-color: '#0B0C10';
+  border: '#45A293';
+  color: '#45A293';
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

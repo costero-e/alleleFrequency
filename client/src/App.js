@@ -53,8 +53,7 @@ function App () {
         }
       }
       let response;
-      if (auth && auth.userData.access_token){
-        console.log(auth.userData.access_token)
+      if (auth && auth.userData){
       response = await axios({
         method: 'post',
         url: `http://localhost:5050/api/g_variants`,
@@ -62,7 +61,7 @@ function App () {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${auth.userData.access_token}`
         },
-        jsonData1
+        data: jsonData1
       }
       )
     } else {
@@ -73,7 +72,7 @@ function App () {
         headers: {
           'Content-Type': 'application/json'
         },
-        jsonData1
+        data: jsonData1
       })
     }
       console.log(response)
@@ -85,19 +84,29 @@ function App () {
 
   return (
     <Container className='pt-3'>
+      <Row>
+
+      <Col lg={10}>
+      <img class="GDI-logo" src="https://gdi.onemilliongenomes.eu/images/gdi-logo.svg" alt="GDI"></img>
+      </Col>
+      <Col>
       <Button onClick={onClickHandler} style={{backgroundImage:"url('/../ls-login.png')",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}}></Button>
       {/*<button></button>*/}
 
       {/* When the flag is true, the page will be shown */}
+      
       {auth && auth.userData && <SignInForm/>}
       {!auth.userData && isQuizePageVisible && <SignInForm/>}
-      <img class="GDI-logo" src="https://gdi.onemilliongenomes.eu/images/gdi-logo.svg" alt="GDI"></img>
+      </Col>
+      
       <h1>Allele Frequency Browser</h1>
       <p className='lead'>
         Use the controls below to search for a variant and filter the results.
       </p>
           <Search search={search} /> {/* changed */}
+          
 
+          </Row>
       <Row>
       <Col lg={8}>
           <ResultList results={results} /> {/* changed */}

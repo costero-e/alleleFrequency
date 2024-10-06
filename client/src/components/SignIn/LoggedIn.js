@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAuth } from 'oidc-react'
-
+import { Button } from 'react-bootstrap';
 
 
 const LoggedIn = () => {
@@ -11,11 +11,9 @@ const LoggedIn = () => {
     return (
       <div>
       <p>
-        Logged in! 🎉
+        Logged in as <b>{auth.userData.profile.email}</b>
       </p>
-              <button onClick={() => auth.signOut() && auth.signOutRedirect()}>
-              <i className="fa fa-sign-out"></i> Sign Out
-            </button>
+      <Button onClick={() => auth.signOut() && auth.signOutRedirect()} type='submit' variant='primary'>Sign Out</Button>
             </div>
     )
   }

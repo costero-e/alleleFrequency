@@ -71,7 +71,11 @@ function Search ({ search }) { // changed
           <Form.Group as={Row}>
             <Row>
             <Col>
-              <Button className="mt-3" type='submit' variant='primary'>Search</Button>
+              <Button style={{
+        backgroundColor: '#7B1B58',
+        borderColor: '#7B1B58',
+        color: 'white'
+    }} className="mt-3" type='submit' variant='primary'>Search</Button>
             </Col>
             </Row>
           </Form.Group>
