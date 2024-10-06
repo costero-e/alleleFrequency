@@ -14,8 +14,9 @@ function App () {
   const [results, setResults] = useState([]);
 
   // new
-  const search = async (query, genres, runtimeMinutes) => {
+  const search = async (cohort, variant, genome) => {
     let jsonData1 = {}
+    var arr = variant.split("-");
     try {
       jsonData1 = {
         meta: {
@@ -32,9 +33,14 @@ function App () {
           requestedGranularity: 'record'
         }
       }
-      const response = await axios.post(
-        'https://beacon-ri-demo.ega-archive.org/api/g_variants',
+      const response = await axios({
+        method: 'get',
+        url: `http://localhost:5050/api/g_variants?start=${arr[1]}&alternateBases=${arr[2]}&referenceBases=${arr[3]}&referenceName=${arr[0]}`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         jsonData1
+      }
       )
       console.log(response)
       setResults(response.data.response.resultSets);

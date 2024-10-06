@@ -9,18 +9,18 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 function Search ({ search }) { // changed
     const onSubmit = async (values, actions) => {
         await search(
-          values.query,
-          values.runtimeMinutes,
-          values.genres
+          values.cohort,
+          values.variant,
+          values.genome
         );
       };
   
     return (
       <Formik
         initialValues={{
-          query: '',
-          genres: '',
-          runtimeMinutes: ''
+          cohort: '',
+          variant: '',
+          genome: ''
         }}
         onSubmit={onSubmit}
       >
@@ -38,7 +38,7 @@ function Search ({ search }) { // changed
                 <Form.Label>Variant</Form.Label>
                     <Form.Control
                     type="text"
-                    name="genres"
+                    name="variant"
                     placeholder="Search for a variant (e.g. 13-32398489-A-T)"
                     value={values.genres}
                     onChange={handleChange}
@@ -47,7 +47,7 @@ function Search ({ search }) { // changed
                 
                 <Col lg={2}>
                 <Form.Label htmlFor="points">Ref Genome</Form.Label>
-                <Form.Select>
+                <Form.Select value={values.genome}>
                       <option>...</option>
                       <option value="1">hg38</option>
                       <option value="2">hg37</option>
@@ -57,7 +57,7 @@ function Search ({ search }) { // changed
                     <Col lg={2}>
                     <Form.Label>Cohort</Form.Label>
             
-                    <Form.Select>
+                    <Form.Select value={values.cohort}>
                       <option>...</option>
                       <option value="c1">Cohort 1</option>
                       <option value="c2">Cohort 2</option>
