@@ -1,58 +1,31 @@
 // client/src/components/ResultList.js
 
-import React from 'react';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import React, { useState, useEffect} from 'react';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 // changed
-function ResultList ({ results }) {
+function ResultList ({ results }, props) {
   console.log(results)
-  // new
-  const resultItems = results.map(result =>
-
-
-    <tr>
-    <td>{result.id}</td>
-    <td>22</td>
-    <td>14</td>
-    <td>3</td>
-    <td>5</td>
-    </tr>
-    
-
-
-  );
-
-
+  const columns = [
+    { field: 'population', headerName: 'Ancestry', flex: 1, headerClassName: 'table-header' },
+    { field: 'alleleCount', headerName: 'Allele Count', flex: 1, headerClassName: 'table-header' },
+    { field: 'alleleNumber', headerName: 'Allele Number', flex: 1, headerClassName: 'table-header' },
+    { field: 'alleleCountHomozygous', headerName: 'Homozygous/Hemizygous Count', flex: 1, headerClassName: 'table-header' },
+    { field: 'alleleFrequency', headerName: 'Allele Frequency', flex: 1, headerClassName: 'table-header' },
+]
+  var i =0
+  const rows = []
+  const resultItems = results.map(result => result.results.map(variant => variant.frequencyInPopulations.map(frequencyInPopulation => frequencyInPopulation.frequencies.map(frequency =>
   
+    rows.push({ 
+      id: i+=1,
+      population: frequency.population, 
+      alleleCount: frequency.alleleCount, 
+      alleleNumber: frequency.alleleNumber,
+      alleleCountHomozygous: frequency.alleleCountHomozygous,
+      alleleFrequency: frequency.alleleFrequency, })
 
-  
-  
-
-
-
-
-
-
-
-
-
+  ))));
  // document.getElementById('clickme').onclick = sort_by_key(results, 'id');
 
   // document.getElementById('clickme2').onclick = sort_by_key(results, 'id');
@@ -60,49 +33,27 @@ function ResultList ({ results }) {
   return (
     <div id="eldiv">
     {results && results.length === 0 && <p></p>}
-    {results && results.length != 0 &&
-    <table>
-    <thead>
-      <tr>
-        <th>Ancestry</th>
-        <th>Allele Count</th>
-        <th>Allele Number</th>
-        <th>Homozygous/Hemizygous Count</th>
-        <th>Homozygous/Hemizygous Count</th>
-      </tr>
-    </thead>
-    <tbody>
-    {resultItems}
-    </tbody>
-    </table>}
-    
+    {results && results.length !== 0 &&
+        <DataGrid 
+
+        initialState={{
+            columns: {
+              columnVisibilityModel: {
+                // Hide columns status and traderName, the other columns will remain visible
+                sex_concept_class_id: false,
+                
+              },
+            },
+          }}
+        getRowHeight={() => 'auto' }
 
 
+            columns={columns}
+            rows={rows}
+            readOnly={true}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        />}
       {!results && <p>Search using the left panel.</p>}
-      
-      
-      
-
     </div>
     
   );

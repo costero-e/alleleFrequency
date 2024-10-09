@@ -37,10 +37,10 @@ function App () {
         },
         query: {
           requestParameters: {
-        "alternateBases": "G" ,
-    "referenceBases": "A" ,
-"start": "16050074",
-            "referenceName": "22"
+        "alternateBases": arr[2],
+    "referenceBases": arr[3],
+"start": arr[1],
+            "referenceName": arr[0]
 },
           filters: [],
           includeResultsetResponses: 'ALL',
@@ -53,7 +53,9 @@ function App () {
         }
       }
       let response;
+      
       if (auth && auth.userData){
+        console.log(auth)
       response = await axios({
         method: 'post',
         url: `http://localhost:5050/api/g_variants`,
@@ -86,8 +88,12 @@ function App () {
     <Container className='pt-3'>
       <Row>
 
-      <Col lg={10}>
+      <Col lg={3}>
       <img class="GDI-logo" src="https://gdi.onemilliongenomes.eu/images/gdi-logo.svg" alt="GDI"></img>
+      </Col>
+      <Col lg={7}>
+      <h1 class="allele">Allele Frequency Browser</h1>
+
       </Col>
       <Col>
       <Button onClick={onClickHandler} style={{backgroundImage:"url('/../ls-login.png')",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}}></Button>
@@ -98,11 +104,10 @@ function App () {
       {auth && auth.userData && <SignInForm/>}
       {!auth.userData && isQuizePageVisible && <SignInForm/>}
       </Col>
-      
-      <h1>Allele Frequency Browser</h1>
       <p className='lead'>
         Use the controls below to search for a variant and filter the results.
       </p>
+
           <Search search={search} /> {/* changed */}
           
 
