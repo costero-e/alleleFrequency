@@ -30,6 +30,7 @@ function App () {
     let jsonData1 = {}
     var arr = variant.split("-");
     //console.log(auth.userData.access_token);
+    console.log(auth)
     try {
       jsonData1 = {
         meta: {
@@ -96,7 +97,7 @@ function App () {
 
       </Col>
       <Col>
-      <Button onClick={onClickHandler} style={{backgroundImage:"url('/../ls-login.png')",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}}></Button>
+      <button onClick={onClickHandler} style={{backgroundImage:"url('/../ls-login.png')",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}}></button>
       {/*<button></button>*/}
 
       {/* When the flag is true, the page will be shown */}

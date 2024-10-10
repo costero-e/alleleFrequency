@@ -1,17 +1,18 @@
 // client/src/components/ResultList.js
 
 import React, { useState, useEffect} from 'react';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
+import { Box, ThemeProvider, createTheme } from '@mui/system';
 
 // changed
 function ResultList ({ results }, props) {
   console.log(results)
   const columns = [
-    { field: 'population', headerName: 'Ancestry', flex: 1, headerClassName: 'table-header' },
-    { field: 'alleleCount', headerName: 'Allele Count', flex: 1, headerClassName: 'table-header' },
-    { field: 'alleleNumber', headerName: 'Allele Number', flex: 1, headerClassName: 'table-header' },
-    { field: 'alleleCountHomozygous', headerName: 'Homozygous/Hemizygous Count', flex: 1, headerClassName: 'table-header' },
-    { field: 'alleleFrequency', headerName: 'Allele Frequency', flex: 1, headerClassName: 'table-header' },
+    { field: 'population', headerName: 'Ancestry', flex: 3, headerClassName: 'super-app-theme--header' },
+    { field: 'alleleCount', headerName: 'Allele Count', flex: 3, headerClassName: 'super-app-theme--header' },
+    { field: 'alleleNumber', headerName: 'Allele Number', flex: 3, headerClassName: 'super-app-theme--header' },
+    { field: 'alleleCountHomozygous', headerName: 'Homozygous/Hemizygous Count', flex: 3, headerClassName: 'super-app-theme--header' },
+    { field: 'alleleFrequency', headerName: 'Allele Frequency', flex: 3, headerClassName: 'super-app-theme--header' },
 ]
   var i =0
   const rows = []
@@ -34,7 +35,19 @@ function ResultList ({ results }, props) {
     <div id="eldiv">
     {results && results.length === 0 && <p></p>}
     {results && results.length !== 0 &&
-        <DataGrid 
+    <Box sx={{ margin: 2,
+      width: '100%', backgroundColor: 'white',
+      '& .super-app-theme--header': {
+        backgroundColor: '#7B1B58',
+        color: 'white'
+      }, }}>
+        <DataGrid sx={{
+          boxShadow: 2,
+          '& .MuiDataGrid-cell:hover': {
+            color: '#7B1B58',
+            backgroundColor: 'white'
+          },
+        }}
 
         initialState={{
             columns: {
@@ -52,7 +65,7 @@ function ResultList ({ results }, props) {
             rows={rows}
             readOnly={true}
 
-        />}
+        /></Box>}
       {!results && <p>Search using the left panel.</p>}
     </div>
     
