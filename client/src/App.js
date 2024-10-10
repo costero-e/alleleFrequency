@@ -4,7 +4,7 @@ import React, { useState } from 'react'; // changed
 
 import './App.css';
 
-import { Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 
 import ResultList from './components/ResultList';
 import Search from './components/Search';
@@ -12,6 +12,8 @@ import Search from './components/Search';
 import SignInForm from './components/SignIn/SignInForm'
 
 import { useAuth } from 'oidc-react'
+
+import Footer from './components/Footer.js'
 
 function App () {
   // new
@@ -30,7 +32,7 @@ function App () {
     let jsonData1 = {}
     var arr = variant.split("-");
     //console.log(auth.userData.access_token);
-    console.log(auth)
+    // console.log(auth)
     try {
       jsonData1 = {
         meta: {
@@ -56,7 +58,7 @@ function App () {
       let response;
       
       if (auth && auth.userData){
-        console.log(auth)
+        // console.log(auth)
       response = await axios({
         method: 'post',
         url: `http://localhost:5050/api/g_variants`,
@@ -105,7 +107,7 @@ function App () {
       {auth && auth.userData && <SignInForm/>}
       {!auth.userData && isQuizePageVisible && <SignInForm/>}
       </Col>
-      <p className='lead'>
+      <p className='lead mt-5'>
         Use the controls below to search for a variant and filter the results.
       </p>
 
@@ -118,7 +120,10 @@ function App () {
           <ResultList results={results} /> {/* changed */}
         </Col>
         </Row>
+        <Footer></Footer>
     </Container>
+    
+    
   );
 }
 

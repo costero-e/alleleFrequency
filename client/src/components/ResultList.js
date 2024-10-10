@@ -1,12 +1,12 @@
 // client/src/components/ResultList.js
 
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Box, ThemeProvider, createTheme } from '@mui/system';
+import { Box } from '@mui/system';
 
 // changed
 function ResultList ({ results }, props) {
-  console.log(results)
+  // console.log(results)
   const columns = [
     { field: 'population', headerName: 'Ancestry', flex: 3, headerClassName: 'super-app-theme--header' },
     { field: 'alleleCount', headerName: 'Allele Count', flex: 3, headerClassName: 'super-app-theme--header' },
@@ -36,13 +36,14 @@ function ResultList ({ results }, props) {
     {results && results.length === 0 && <p></p>}
     {results && results.length !== 0 &&
     <Box sx={{ margin: 2,
-      width: '100%', backgroundColor: 'white',
+      width: '100%',backgroundColor: 'white',
       '& .super-app-theme--header': {
         backgroundColor: '#7B1B58',
         color: 'white'
       }, }}>
         <DataGrid sx={{
           boxShadow: 2,
+          height: '100%',
           '& .MuiDataGrid-cell:hover': {
             color: '#7B1B58',
             backgroundColor: 'white'
@@ -56,6 +57,9 @@ function ResultList ({ results }, props) {
                 sex_concept_class_id: false,
                 
               },
+            },
+            pagination: {
+              paginationModel: { pageSize: 10, page: 0 },
             },
           }}
         getRowHeight={() => 'auto' }

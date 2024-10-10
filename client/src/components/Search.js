@@ -3,7 +3,7 @@
 import React from 'react';
 
 import { Formik } from 'formik';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
 
 
 function Search ({ search }) { // changed
@@ -71,7 +71,7 @@ function Search ({ search }) { // changed
           <Form.Group as={Row}>
             <Row>
             <Col>
-              <button style={{borderRadius: "5px", border: "1px solid #7B1C58",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}} className="mt-3" type='submit' variant='primary'>Search</button>
+              <button className="button1 mt-3" type='submit' variant='primary'>Search</button>
             </Col>
             </Row>
           </Form.Group>

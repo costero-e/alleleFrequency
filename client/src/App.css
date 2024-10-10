@@ -7,14 +7,47 @@
   pointer-events: none;
 }
 
+.euroflag{
+  height: 30px;
+}
+
+.footer{
+  width: 100vw;
+  border-top: 10px solid #7B1B58;
+  position:absolute;
+  left:0;
+  bottom:0;
+  right:0;
+  background-color: #F5F5F5 !important;
+}
+
+.lsaai{
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
 body{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  height: 100vh;
 }
 
 .allele{
 position: relative;
 top: 20%;
 color: #7B1C58;
+}
+
+.button1{
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 35px;
+  width: 80px;
+}
+
+
+.button1:hover {
+  background-color: #7B1B58;
+  color: white;
 }
 
 .GDI-logo{
