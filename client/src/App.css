@@ -50,6 +50,21 @@ color: #7B1C58;
   color: white;
 }
 
+.button2{
+  border-radius: 5px;
+  border: 1px solid black;
+  height: 35px;
+  width: 80px;
+}
+
+
+.button2:hover {
+  background-color: #7276B1;
+  color: white;
+}
+
+
+
 .GDI-logo{
   height: 10vh;
 }

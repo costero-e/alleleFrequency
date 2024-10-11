@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { Col, Form, Row } from 'react-bootstrap';
 
 
+
 function Search ({ search }) { // changed
     const onSubmit = async (values, actions) => {
         await search(
@@ -14,6 +15,7 @@ function Search ({ search }) { // changed
           values.genome
         );
       };
+      
   
     return (
       <Formik
@@ -72,6 +74,9 @@ function Search ({ search }) { // changed
             <Row>
             <Col>
               <button className="button1 mt-3" type='submit' variant='primary'>Search</button>
+              <button className="button2 mt-3 ms-2" type='submit' variant='primary' onClick={() => {window.location.href="/"}}>
+      Reset
+    </button>
             </Col>
             </Row>
           </Form.Group>

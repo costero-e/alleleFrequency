@@ -99,7 +99,7 @@ function App () {
 
       </Col>
       <Col>
-      <button onClick={onClickHandler} style={{backgroundImage:"url('/../ls-login.png')",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}}></button>
+      {/*<button onClick={onClickHandler} style={{backgroundImage:"url('/../ls-login.png')",backgroundSize:"cover",backgroundColor:"transparent",height:"35px",width:"160px",borderWidth:"0"}}></button>*/}
       {/*<button></button>*/}
 
       {/* When the flag is true, the page will be shown */}
